@@ -22,3 +22,7 @@
 
 <%= link_to 'Edit', edit_inquiry_path(@inquiry) %> |
 <%= link_to 'Back', inquiries_path %>
+
+
+<%= link_to 'Back to the House Hunter', househunter_path(@inquiry.UserId) %>
+<%= link_to 'Back to the House Details ', househunter_path(@inquiry) %>
