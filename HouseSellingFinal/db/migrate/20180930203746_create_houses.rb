@@ -13,7 +13,8 @@ class CreateHouses < ActiveRecord::Migration[5.1]
       t.string :currentHouseOwner
       t.string :contactInfo
       t.string :potentialBuyers
-
+      t.references :realestatecompany
+      t.references :realtor
       t.timestamps
     end
   end

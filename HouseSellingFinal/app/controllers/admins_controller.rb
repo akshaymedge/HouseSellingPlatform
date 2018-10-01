@@ -3,6 +3,7 @@ class AdminsController < ApplicationController
 
   # GET /admins
   # GET /admins.json
+  # session[:current_user_id] = Admin.id
   def index
     @admins = Admin.all
     respond_to do |format|
@@ -67,7 +68,7 @@ class AdminsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
       format.json { head :no_content }
-    end
+      end
   end
 
   private

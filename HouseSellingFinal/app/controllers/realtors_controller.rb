@@ -3,6 +3,7 @@ class RealtorsController < ApplicationController
 
   # GET /realtors
   # GET /realtors.json
+  # session[:current_user_id] = Realtor.id
   def index
     @realtors = Realtor.all
   end

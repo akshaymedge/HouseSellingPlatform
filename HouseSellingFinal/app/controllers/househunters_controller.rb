@@ -3,6 +3,7 @@ class HousehuntersController < ApplicationController
 
   # GET /househunters
   # GET /househunters.json
+  # session[:current_user_id] = Househunter.id
   def index
     @househunters = Househunter.all
     respond_to do |format|

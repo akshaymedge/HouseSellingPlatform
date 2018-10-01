@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181001184816) do
+ActiveRecord::Schema.define(version: 20181001190934) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,8 @@ ActiveRecord::Schema.define(version: 20181001184816) do
     t.string "potentialBuyers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "realtor_id"
+    t.index ["realtor_id"], name: "index_houses_on_realtor_id"
   end
 
   create_table "inquiries", force: :cascade do |t|
@@ -55,6 +57,8 @@ ActiveRecord::Schema.define(version: 20181001184816) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "househunter_id"
+    t.integer "house_id"
+    t.index ["house_id"], name: "index_inquiries_on_house_id"
     t.index ["househunter_id"], name: "index_inquiries_on_househunter_id"
   end
 
