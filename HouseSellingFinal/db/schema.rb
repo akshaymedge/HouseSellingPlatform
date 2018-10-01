@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180930203804) do
+ActiveRecord::Schema.define(version: 20181001184816) do
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20180930203804) do
     t.text "MessageContent"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "househunter_id"
+    t.index ["househunter_id"], name: "index_inquiries_on_househunter_id"
   end
 
   create_table "realestatecompanies", force: :cascade do |t|

@@ -1,6 +1,7 @@
 class House < ApplicationRecord
   class House < ApplicationRecord
     belongs_to :realtor
+    has_many :inquiries
     #attr_accessor :houseId
     validates :houseId, :presence => true , uniqueness: true ,numericality: { only_integer: true }
 

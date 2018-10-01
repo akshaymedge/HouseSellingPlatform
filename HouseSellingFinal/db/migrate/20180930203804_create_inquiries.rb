@@ -5,6 +5,7 @@ class CreateInquiries < ActiveRecord::Migration[5.1]
       t.integer :UserId
       t.string :Subject
       t.text :MessageContent
+      t.references :househunter
 
       t.timestamps
     end
