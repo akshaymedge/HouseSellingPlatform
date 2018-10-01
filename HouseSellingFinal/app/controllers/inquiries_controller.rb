@@ -5,6 +5,10 @@ class InquiriesController < ApplicationController
   # GET /inquiries.json
   def index
     @inquiries = Inquiry.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @inquiries }
+    end
   end
 
   # GET /inquiries/1

@@ -5,6 +5,10 @@ class HousehuntersController < ApplicationController
   # GET /househunters.json
   def index
     @househunters = Househunter.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @househunters }
+    end
   end
 
   # GET /househunters/1

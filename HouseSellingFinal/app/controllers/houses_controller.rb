@@ -5,6 +5,10 @@ class HousesController < ApplicationController
   # GET /houses.json
   def index
     @houses = House.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @houses }
+    end
   end
 
   # GET /houses/1

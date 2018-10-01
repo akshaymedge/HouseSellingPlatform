@@ -5,6 +5,10 @@ class RealestatecompaniesController < ApplicationController
   # GET /realestatecompanies.json
   def index
     @realestatecompanies = Realestatecompany.all
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @realestatecompanies }
+    end
   end
 
   # GET /realestatecompanies/1
