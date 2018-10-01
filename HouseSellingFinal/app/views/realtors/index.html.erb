@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Realtors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Password</th>
+      <th>Companyid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @realtors.each do |realtor| %>
+      <tr>
+        <td><%= realtor.email %></td>
+        <td><%= realtor.name %></td>
+        <td><%= realtor.password %></td>
+        <td><%= realtor.companyid %></td>
+        <td><%= link_to 'Show', realtor %></td>
+        <td><%= link_to 'Edit', edit_realtor_path(realtor) %></td>
+        <td><%= button_to 'Destroy', realtor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'List a House', new_house_path %>
+<%= link_to 'Houses', houses_path %>
+<%= link_to 'New Realtor', new_realtor_path %>
+<%= link_to 'List of Real Estate Companies', realestatecompanies_path %>

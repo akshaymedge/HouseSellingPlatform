@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @househunter.email %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @househunter.name %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @househunter.password %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @househunter.phone %>
+</p>
+
+<p>
+  <strong>Contactmethod:</strong>
+  <%= @househunter.contactmethod %>
+</p>
+
+<%= link_to 'Edit', edit_househunter_path(@househunter) %> |
+<%= link_to 'Back', househunters_path %> |
+<%= link_to 'Add an Inquiry', new_inquiry_path %>

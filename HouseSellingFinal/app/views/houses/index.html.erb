@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Houses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>House Id</th>
+      <th>Company Id</th>
+      <th>Location</th>
+      <th>Square Foot Area</th>
+      <th>Year Built</th>
+      <th>Style</th>
+      <th>List Price</th>
+      <th>Number of Floors</th>
+      <th>Basement</th>
+      <th>Current House Owner</th>
+      <th>Contact Info</th>
+      <th>Potential Buyers</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @houses.each do |house| %>
+      <tr>
+        <td><%= house.houseId %></td>
+        <td><%= house.companyId %></td>
+        <td><%= house.location %></td>
+        <td><%= house.squarefootage %></td>
+        <td><%= house.yearbuilt %></td>
+        <td><%= house.style %></td>
+        <td><%= house.listprice %></td>
+        <td><%= house.nooffloors %></td>
+        <td><%= house.basement %></td>
+        <td><%= house.currentHouseOwner %></td>
+        <td><%= house.contactInfo %></td>
+        <td><%= house.potentialBuyers %></td>
+        <td><%= link_to 'Show', house %></td>
+        <td><%= link_to 'Edit', edit_house_path(house) %></td>
+        <td><%= button_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New House', new_house_path %> |
+<%= link_to 'Back to Houses', houses_path %> |
+<%= link_to 'Back', realtors_path %>
+

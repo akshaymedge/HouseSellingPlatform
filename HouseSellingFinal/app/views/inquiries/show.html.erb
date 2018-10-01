@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Inquiry Id:</strong>
+  <%= @inquiry.InquiryId %>
+</p>
+
+<p>
+  <strong>User Id:</strong>
+  <%= @inquiry.UserId %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @inquiry.Subject %>
+</p>
+
+<p>
+  <strong>Message Content:</strong>
+  <%= @inquiry.MessageContent %>
+</p>
+
+<%= link_to 'Edit', edit_inquiry_path(@inquiry) %> |
+<%= link_to 'Back', inquiries_path %>

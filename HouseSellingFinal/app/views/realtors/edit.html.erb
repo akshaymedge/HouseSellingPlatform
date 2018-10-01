@@ -1,0 +1,8 @@
+<h1>Editing Realtor</h1>
+
+<%= render 'form', realtor: @realtor %>
+
+<%= link_to 'Show', @realtor %> |
+<%= link_to 'Back', realtors_path %>
+<%= link_to 'Create New Real Estate Company', new_realestatecompany_path %>
+<%= link_to 'Edit Company Information', edit_realestatecompany_path(@realtor.companyid) %>
