@@ -1,4 +1,6 @@
 class Househunter < ApplicationRecord
+  has_many :inquiries
+
   validates :email, :uniqueness => true, :presence => true
   validates :name, :presence => true
   validates :password, :presence => true
