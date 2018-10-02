@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181001190934) do
+ActiveRecord::Schema.define(version: 20180930203804) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "admins", force: :cascade do |t|
     t.string "name"
@@ -43,9 +46,11 @@ ActiveRecord::Schema.define(version: 20181001190934) do
     t.string "currentHouseOwner"
     t.string "contactInfo"
     t.string "potentialBuyers"
+    t.bigint "realestatecompany_id"
+    t.bigint "realtor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "realtor_id"
+    t.index ["realestatecompany_id"], name: "index_houses_on_realestatecompany_id"
     t.index ["realtor_id"], name: "index_houses_on_realtor_id"
   end
 
@@ -54,10 +59,10 @@ ActiveRecord::Schema.define(version: 20181001190934) do
     t.integer "UserId"
     t.string "Subject"
     t.text "MessageContent"
+    t.bigint "househunter_id"
+    t.bigint "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "househunter_id"
-    t.integer "house_id"
     t.index ["house_id"], name: "index_inquiries_on_house_id"
     t.index ["househunter_id"], name: "index_inquiries_on_househunter_id"
   end
@@ -80,7 +85,7 @@ ActiveRecord::Schema.define(version: 20181001190934) do
     t.string "name"
     t.string "password"
     t.integer "companyid"
-    t.integer "realestatecompany_id"
+    t.bigint "realestatecompany_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["realestatecompany_id"], name: "index_realtors_on_realestatecompany_id"
