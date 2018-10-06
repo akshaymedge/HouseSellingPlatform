@@ -1,4 +1,3 @@
-class House < ApplicationRecord
   class House < ApplicationRecord
     belongs_to :realtor
     has_many :househunters
@@ -42,5 +41,3 @@ class House < ApplicationRecord
     #attr_accessor :basement
     validates :basement, :presence => true , inclusion: { in: [true, false] }
   end
-
-end
