@@ -5,36 +5,29 @@ class InquiriesController < ApplicationController
   # GET /inquiries.json
   def index
     @inquiries = Inquiry.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @inquiries }
-    end
   end
 
   # GET /inquiries/1
   # GET /inquiries/1.json
   def show
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @realtor }
-    end
   end
 
   # GET /inquiries/new
   def new
     @inquiry = Inquiry.new
+    # puts "Inquiry Params: #{inquiry_params}"
   end
 
   # GET /inquiries/1/edit
   def edit
-    @inquiry = Inquiry.find(params[:id])
   end
 
   # POST /inquiries
   # POST /inquiries.json
   def create
     @inquiry = Inquiry.new(inquiry_params)
-
+    puts "Inquiry Params: #{inquiry_params}"
+    @inquiry.update(user_id: current_user.id)
     respond_to do |format|
       if @inquiry.save
         format.html { redirect_to @inquiry, notice: 'Inquiry was successfully created.' }
@@ -63,7 +56,6 @@ class InquiriesController < ApplicationController
   # DELETE /inquiries/1
   # DELETE /inquiries/1.json
   def destroy
-    @inquiry = Inquiry.find(params[:id])
     @inquiry.destroy
     respond_to do |format|
       format.html { redirect_to inquiries_url, notice: 'Inquiry was successfully destroyed.' }
@@ -75,12 +67,10 @@ class InquiriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_inquiry
       @inquiry = Inquiry.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to :action => 'index'
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def inquiry_params
-      params.require(:inquiry).permit(:InquiryId, :UserId, :Subject, :MessageContent)
+      params.require(:inquiry).permit(:house_id, :user_id, :subject, :message_content)
     end
 end

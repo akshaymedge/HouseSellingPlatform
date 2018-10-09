@@ -17,7 +17,7 @@ class InquiriesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create inquiry" do
     assert_difference('Inquiry.count') do
-      post inquiries_url, params: { inquiry: { InquiryId: @inquiry.InquiryId, MessageContent: @inquiry.MessageContent, Subject: @inquiry.Subject, UserId: @inquiry.UserId } }
+      post inquiries_url, params: { inquiry: { message_content: @inquiry.message_content, subject: @inquiry.subject } }
     end
 
     assert_redirected_to inquiry_url(Inquiry.last)
@@ -34,7 +34,7 @@ class InquiriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update inquiry" do
-    patch inquiry_url(@inquiry), params: { inquiry: { InquiryId: @inquiry.InquiryId, MessageContent: @inquiry.MessageContent, Subject: @inquiry.Subject, UserId: @inquiry.UserId } }
+    patch inquiry_url(@inquiry), params: { inquiry: { message_content: @inquiry.message_content, subject: @inquiry.subject } }
     assert_redirected_to inquiry_url(@inquiry)
   end
 

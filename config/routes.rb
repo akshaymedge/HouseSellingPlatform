@@ -1,10 +1,18 @@
 Rails.application.routes.draw do
+
+  resources :sessions
+  resources :replies
   resources :inquiries
   resources :houses
-  resources :realestatecompanies
-  resources :househunters
-  resources :realtors
-  resources :admins
+  resources :users
+  resources :companies
+
+  root'users#new'
+  get 'sessions/new'
+  get 'login', to: 'sessions#new'
+  get 'signup', to: 'users#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  # root'users#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root'admins#index'
 end

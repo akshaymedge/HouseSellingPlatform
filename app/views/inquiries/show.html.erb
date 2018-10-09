@@ -1,28 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Inquiry Id:</strong>
-  <%= @inquiry.InquiryId %>
-</p>
-
-<p>
-  <strong>User Id:</strong>
-  <%= @inquiry.UserId %>
-</p>
-
-<p>
   <strong>Subject:</strong>
-  <%= @inquiry.Subject %>
+  <%= @inquiry.subject %>
 </p>
 
 <p>
-  <strong>Message Content:</strong>
-  <%= @inquiry.MessageContent %>
+  <strong>Message content:</strong>
+  <%= @inquiry.message_content %>
 </p>
 
 <%= link_to 'Edit', edit_inquiry_path(@inquiry) %> |
 <%= link_to 'Back', inquiries_path %>
-
-
-<%= link_to 'Back to the House Hunter', househunter_path(@inquiry.UserId) %>
-<%= link_to 'Back to the House Details ', househunter_path(@inquiry) %>

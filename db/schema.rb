@@ -10,65 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180930203804) do
+ActiveRecord::Schema.define(version: 20181008001312) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "admins", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "househunters", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.string "password"
-    t.string "phone"
-    t.string "contactmethod"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "houses", force: :cascade do |t|
-    t.integer "houseId"
-    t.integer "companyId"
-    t.string "location"
-    t.integer "squarefootage"
-    t.integer "yearbuilt"
-    t.string "style"
-    t.integer "listprice"
-    t.integer "nooffloors"
-    t.boolean "basement"
-    t.string "currentHouseOwner"
-    t.string "contactInfo"
-    t.string "potentialBuyers"
-    t.bigint "realestatecompany_id"
-    t.bigint "realtor_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["realestatecompany_id"], name: "index_houses_on_realestatecompany_id"
-    t.index ["realtor_id"], name: "index_houses_on_realtor_id"
-  end
-
-  create_table "inquiries", force: :cascade do |t|
-    t.integer "InquiryId"
-    t.integer "UserId"
-    t.string "Subject"
-    t.text "MessageContent"
-    t.bigint "househunter_id"
-    t.bigint "house_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["house_id"], name: "index_inquiries_on_house_id"
-    t.index ["househunter_id"], name: "index_inquiries_on_househunter_id"
-  end
-
-  create_table "realestatecompanies", force: :cascade do |t|
-    t.integer "companyid"
+  create_table "companies", force: :cascade do |t|
     t.string "name"
     t.string "website"
     t.string "address"
@@ -80,15 +24,55 @@ ActiveRecord::Schema.define(version: 20180930203804) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "realtors", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
-    t.string "password"
-    t.integer "companyid"
-    t.bigint "realestatecompany_id"
+  create_table "houses", force: :cascade do |t|
+    t.string "location"
+    t.integer "square_footage"
+    t.integer "year_built"
+    t.string "style"
+    t.integer "list_price"
+    t.integer "no_of_floors"
+    t.boolean "basement"
+    t.string "current_house_owner"
+    t.string "contact_info"
+    t.string "potential_buyers"
+    t.integer "user_id"
+    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["realestatecompany_id"], name: "index_realtors_on_realestatecompany_id"
+    t.index ["company_id"], name: "index_houses_on_company_id"
+    t.index ["user_id"], name: "index_houses_on_user_id"
+  end
+
+  create_table "inquiries", force: :cascade do |t|
+    t.string "subject"
+    t.text "message_content"
+    t.integer "user_id"
+    t.integer "house_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["house_id"], name: "index_inquiries_on_house_id"
+    t.index ["user_id"], name: "index_inquiries_on_user_id"
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.string "body"
+    t.integer "inquiry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inquiry_id"], name: "index_replies_on_inquiry_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "name"
+    t.string "password_digest"
+    t.string "phone"
+    t.string "contactmethod"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
   end
 
 end

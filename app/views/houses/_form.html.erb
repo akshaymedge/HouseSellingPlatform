@@ -1,4 +1,4 @@
-  <%= form_with(model: house, local: true) do |form| %>
+<%= form_with(model: house, local: true) do |form| %>
   <% if house.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
@@ -12,28 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :houseId %>
-    <%= form.number_field :houseId, id: :house_houseId %>
-  </div>
-
-  <div class="field">
-    <%= form.label :companyId %>
-    <%= form.number_field :companyId, id: :house_companyId %>
-  </div>
-
-  <div class="field">
     <%= form.label :location %>
     <%= form.text_field :location, id: :house_location %>
   </div>
 
   <div class="field">
-    <%= form.label :squarefootage %>
-    <%= form.number_field :squarefootage, id: :house_squarefootage %>
+    <%= form.label :square_footage %>
+    <%= form.number_field :square_footage, id: :house_square_footage %>
   </div>
 
   <div class="field">
-    <%= form.label :yearbuilt %>
-    <%= form.number_field :yearbuilt, id: :house_yearbuilt %>
+    <%= form.label :year_built %>
+    <%= form.number_field :year_built, id: :house_year_built %>
   </div>
 
   <div class="field">
@@ -42,13 +32,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :listprice %>
-    <%= form.number_field :listprice, id: :house_listprice %>
+    <%= form.label :list_price %>
+    <%= form.number_field :list_price, id: :house_list_price %>
   </div>
 
   <div class="field">
-    <%= form.label :nooffloors %>
-    <%= form.number_field :nooffloors, id: :house_nooffloors %>
+    <%= form.label :no_of_floors %>
+    <%= form.number_field :no_of_floors, id: :house_no_of_floors %>
   </div>
 
   <div class="field">
@@ -57,18 +47,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :currentHouseOwner %>
-    <%= form.text_field :currentHouseOwner, id: :house_currentHouseOwner %>
+    <%= form.label :current_house_owner %>
+    <%= form.text_field :current_house_owner, id: :house_current_house_owner %>
   </div>
 
   <div class="field">
-    <%= form.label :contactInfo %>
-    <%= form.text_field :contactInfo, id: :house_contactInfo %>
+    <%= form.label :contact_info %>
+    <%= form.text_field :contact_info, id: :house_contact_info %>
   </div>
 
   <div class="field">
-    <%= form.label :potentialBuyers %>
-    <%= form.text_field :potentialBuyers, id: :house_potentialBuyers %>
+    <%= form.label :potential_buyers %>
+    <%= form.text_field :potential_buyers, id: :house_potential_buyers %>
   </div>
 
   <div class="actions">

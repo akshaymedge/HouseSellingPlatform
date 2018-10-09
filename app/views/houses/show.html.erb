@@ -1,28 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>House Id:</strong>
-  <%= @house.houseId %>
-</p>
-
-<p>
-  <strong>Company Id:</strong>
-  <%= @house.companyId %>
-</p>
-
-<p>
   <strong>Location:</strong>
   <%= @house.location %>
 </p>
 
 <p>
-  <strong>Square Footage:</strong>
-  <%= @house.squarefootage %>
+  <strong>Square footage:</strong>
+  <%= @house.square_footage %>
 </p>
 
 <p>
-  <strong>Year Built:</strong>
-  <%= @house.yearbuilt %>
+  <strong>Year built:</strong>
+  <%= @house.year_built %>
 </p>
 
 <p>
@@ -31,13 +21,13 @@
 </p>
 
 <p>
-  <strong>List Price:</strong>
-  <%= @house.listprice %>
+  <strong>List price:</strong>
+  <%= @house.list_price %>
 </p>
 
 <p>
-  <strong>No Of Floors:</strong>
-  <%= @house.nooffloors %>
+  <strong>No of floors:</strong>
+  <%= @house.no_of_floors %>
 </p>
 
 <p>
@@ -46,20 +36,21 @@
 </p>
 
 <p>
-  <strong>Current House Owner:</strong>
-  <%= @house.currentHouseOwner %>
+  <strong>Current house owner:</strong>
+  <%= @house.current_house_owner %>
 </p>
 
 <p>
-  <strong>Contact Info:</strong>
-  <%= @house.contactInfo %>
+  <strong>Contact info:</strong>
+  <%= @house.contact_info %>
 </p>
 
 <p>
-  <strong>Potential Buyers:</strong>
-  <%= @house.potentialBuyers %>
+  <strong>Potential buyers:</strong>
+  <%= @house.potential_buyers %>
 </p>
-
-<%= link_to 'Edit', edit_house_path(@house) %> |
-<%= link_to 'Back to Houses', houses_path %>
-<%= link_to 'Back', realtors_path %>
+<% if current_user.role == "Admin" || current_user.role == "Realtor" %>
+  <button><%= link_to 'Edit', edit_house_path(@house) %></button> |
+<% end %>
+<button><%= link_to 'Back', houses_path %></button> |
+<button><%= link_to 'Submit an Inquiry', new_inquiry_path %></button>

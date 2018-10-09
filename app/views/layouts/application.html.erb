@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>HouseSellingFinal</title>
-    <%= csrf_meta_tags %>
+<head>
+  <title>HouseSeller</title>
+  <%= csrf_meta_tags %>
 
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+</head>
+<div class="container">
+  <div class="header">
+    <% if logged_in? %>
+      <h3>Welcome <%= current_user.name %> to the House Hunting System</h3>
+      <%= button_to 'Log out', logout_path, method: :delete %>
+      <% else %>
+      <button><%= link_to 'Sign Up', new_user_path %></button> |
+      <button><%= link_to 'Log in', new_session_path %></button>
+    <% end %>
+  </div>
+</div>
+<body>
+<%= yield %>
+</body>
 </html>

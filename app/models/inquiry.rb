@@ -1,6 +1,5 @@
 class Inquiry < ApplicationRecord
-  belongs_to :househunter
-
-  validates :Subject, :presence => true
-  validates :MessageContent, :presence => true
+  belongs_to :house
+  has_many :replies
+  validates :message_content, presence: true
 end
