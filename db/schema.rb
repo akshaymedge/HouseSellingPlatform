@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20180930203804) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "admins", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -46,8 +43,8 @@ ActiveRecord::Schema.define(version: 20180930203804) do
     t.string "currentHouseOwner"
     t.string "contactInfo"
     t.string "potentialBuyers"
-    t.bigint "realestatecompany_id"
-    t.bigint "realtor_id"
+    t.integer "realestatecompany_id"
+    t.integer "realtor_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["realestatecompany_id"], name: "index_houses_on_realestatecompany_id"
@@ -59,8 +56,8 @@ ActiveRecord::Schema.define(version: 20180930203804) do
     t.integer "UserId"
     t.string "Subject"
     t.text "MessageContent"
-    t.bigint "househunter_id"
-    t.bigint "house_id"
+    t.integer "househunter_id"
+    t.integer "house_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["house_id"], name: "index_inquiries_on_house_id"
@@ -85,7 +82,7 @@ ActiveRecord::Schema.define(version: 20180930203804) do
     t.string "name"
     t.string "password"
     t.integer "companyid"
-    t.bigint "realestatecompany_id"
+    t.integer "realestatecompany_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["realestatecompany_id"], name: "index_realtors_on_realestatecompany_id"

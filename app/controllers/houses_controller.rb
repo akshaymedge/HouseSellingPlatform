@@ -4,12 +4,23 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
-    @houses = House.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @houses }
-    end
+    @houses = House.where(nil)
+    puts params.inspect
+    @houses = House.where(list_price: params[:list_price_low]..params[:list_price_high]) if
+        params[:list_price_low].present? and params[:list_price_high].present?
+    @houses = House.where(square_footage: params[:square_footage_low]..params[:square_footage_high]) if
+        params[:square_footage_low].present? and params[:square_footage_high].present?
+    @houses = House.where("location like ?", "#{params[:location]}%") if params[:location].present?
+    @houses = House.where(year_built: params[:year_built_low]..params[:year_built_high]) if
+        params[:year_built_low].present? and params[:year_built_high].present?
+    @houses = House.where(num_of_floors: params[:num_of_floors_low]..params[:num_of_floors_high]) if
+        params[:num_of_floors_low].present? and params[:num_of_floors_high].present?
   end
+
+  def search
+
+  end
+
 
   # GET /houses/1
   # GET /houses/1.json
