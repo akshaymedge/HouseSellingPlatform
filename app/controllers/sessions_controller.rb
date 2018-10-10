@@ -10,8 +10,7 @@ class SessionsController < ApplicationController
     user = User.find_by_email(params[:session][:email])
     if user && user.authenticate(params[:session][:password])
       log_in user
-      puts "logging in"
-      #  unless user.role="Realtor"
+       #  unless user.role="Realtor"
       #   return redirect_to admin_path notice: "Logged in!"
       redirect_to user, notice: "Logged in!"
       #  end

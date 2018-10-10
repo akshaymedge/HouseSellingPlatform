@@ -50,7 +50,9 @@
   <%= @house.potential_buyers %>
 </p>
 <% if current_user.role == "Admin" || current_user.role == "Realtor" %>
-  <button><%= link_to 'Edit', edit_house_path(@house) %></button> |
+  <button><%= link_to 'Edit', edit_house_path(@house) %></button>
 <% end %>
-<button><%= link_to 'Back', houses_path %></button> |
+<button><%= link_to 'Back', houses_path %></button>
+<% if current_user.role == "House Hunter" %>
 <button><%= link_to 'Submit an Inquiry', new_inquiry_path %></button>
+<% end %>

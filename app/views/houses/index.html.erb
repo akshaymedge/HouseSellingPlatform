@@ -33,8 +33,10 @@
         <td><%= house.contact_info %></td>
         <td><%= house.potential_buyers %></td>
         <td><button><%= link_to 'Show', house %></button></td>
+        <% if current_user.role == "HouseHunter" %>
         <td><button><%= link_to 'Submit Inquiry', new_inquiry_path(house.id) %></button></td>
-        <% if current_user.role != "HouseHunter" %>
+        <%end %>
+          <% if current_user.role != "HouseHunter" %>
         <td><button><%= link_to 'Edit', edit_house_path(house) %></button></td>
         <td><button><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
         <%end %>

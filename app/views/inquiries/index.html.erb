@@ -16,9 +16,11 @@
       <tr>
         <td><%= inquiry.subject %></td>
         <td><%= inquiry.message_content %></td>
-        <td><%= link_to 'Show', inquiry %></td>
-        <td><%= link_to 'Edit', edit_inquiry_path(inquiry) %></td>
-        <td><%= button_to 'Destroy', inquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><button><%= link_to 'Show', inquiry %></td></tr></button>
+    <%if current_user && current_user.role =="House Hunter" %>
+        <td><button><%= link_to 'Edit', edit_inquiry_path(inquiry) %></td></button>
+      <%end %>
+        <td><button><%= button_to 'Destroy', inquiry, method: :delete, data: { confirm: 'Are you sure?' } %></td></button>
       </tr>
     <% end %>
   </tbody>
