@@ -43,13 +43,13 @@
     <%= form.select :contactmethod, User::CONTACT_METHOD, id: :user_contactmethod %>
   </div>
 
-  <% if current_user && current_user.role == "Realtor" %>
+  <!--% if current_user && current_user.role == "Realtor" %-->
     <div class="field">
       <%= form.label :company_id %>
       <%= form.select :company_id, options_for_select(Company.all.map {|c| [c.name, c.id] if c.name != "none"}), id: :company_id %>
       Choose Real Estate Company if you are a realtor
     </div>
-  <%end%>
+  <!--%end%-->
 
   <div class="actions">
     <%= form.submit %>
