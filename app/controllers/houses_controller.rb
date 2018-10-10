@@ -8,6 +8,9 @@ class HousesController < ApplicationController
   end
 
   # GET /houses/1
+  #
+  #
+  #
   # GET /houses/1.json
   def show
   end
@@ -69,6 +72,6 @@ class HousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
-      params.require(:house).permit(:location, :square_footage, :year_built, :style, :list_price, :no_of_floors, :basement, :current_house_owner, :contact_info, :potential_buyers)
+      params.require(:house).permit(:location, :square_footage, :year_built, :style, :list_price, :no_of_floors, :basement, :current_house_owner, :contact_info, :potential_buyers, :image)
     end
 end

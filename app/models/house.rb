@@ -1,5 +1,8 @@
 class House < ApplicationRecord
+  #attr_accessible :image
   # belongs_to :user
+
+  mount_uploader :image, ImageUploader
   has_many :inquiries
 
   validates :location, presence: true
