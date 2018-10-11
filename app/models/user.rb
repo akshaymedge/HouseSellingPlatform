@@ -4,7 +4,6 @@ class User < ApplicationRecord
     validates :email, uniqueness: true
     # validates :password, presence: true, allow_nil: true #, :if => :password # only validate if password changed!
     # attr_accessor :email , :password , :password_confirmation
-
   ROLE_LIST = ["Realtor", "HouseHunter","Admin"]
   CONTACT_METHOD = ["Phone","Text","Email"]
 

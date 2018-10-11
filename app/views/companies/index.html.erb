@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Companies</h1>
+<h3>Real Estate Companies</h3>
 
 <table>
   <thead>
@@ -26,9 +26,12 @@
         <td><%= company.founded %></td>
         <td><%= company.revenue %></td>
         <td><%= company.synopsis %></td>
-        <td><button><%= link_to 'Show', company %></button></td>
-        <td><button><%= link_to 'Edit', edit_company_path(company) %></button></td>
-        <td><button><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+
+        <% if current_user && ((current_user.role=="Realtor" && current_user.company_id == company.id) || current_user.role=="Admin") %>
+          <td><button><%= link_to 'Show', company %></button></td>
+          <td><button><%= link_to 'Edit', edit_company_path(company) %></button></td>
+          <td><button><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+          <%end %>
       </tr>
     <% end %>
   </tbody>

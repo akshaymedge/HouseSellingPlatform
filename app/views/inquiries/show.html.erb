@@ -9,7 +9,8 @@
   <strong>Message content:</strong>
   <%= @inquiry.message_content %>
 </p>
-<%if current_user && current_user.role =="House Hunter" %>
+<%if current_user && current_user.role =="HouseHunter" %>
 <%= link_to 'Edit', edit_inquiry_path(@inquiry) %>
   <%end %>
-<%= link_to 'Back', user_path %>
+<button><%= link_to 'Back', inquiries_path %></button>
+<button><%= link_to 'Home', current_user %></button>

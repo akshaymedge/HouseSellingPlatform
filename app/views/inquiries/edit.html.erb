@@ -3,6 +3,5 @@
 <%= render 'form', inquiry: @inquiry %>
 
 <%= link_to 'Show', @inquiry %> |
-<% if current_user && current_user.role == "House Hunter" %>
-<%= link_to 'Back', user_path %>
-<%end %>
+<%= link_to 'Back', inquiries_path %>
+

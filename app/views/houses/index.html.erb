@@ -32,12 +32,18 @@
         <td><%= house.basement %></td>
         <td><%= house.current_house_owner %></td>
         <td><%= house.contact_info %></td>
-        <td><%= house.potential_buyers %></td>
+        <%if current_user.role!="HouseHunter" %>
+          <td><%= house.potential_buyers %></td>
+          <%end %>
         <td><button><%= link_to 'Show', house %></button></td>
         <% if current_user.role == "HouseHunter" %>
-        <td><button><%= link_to 'Submit Inquiry', new_inquiry_path(house.id) %></button></td>
+        <td><button><%= link_to 'Submit Inquiry', new_inquiry_path(:id => house.id) %></button></td>
         <%end %>
-          <% if current_user.role != "HouseHunter" %>
+        <!--% if current_user.role == "Realtor" %-->
+        <td><button><%= link_to 'View House Inquiries', inquiries_path(:id => house.id) %></button></td>
+        <!--% end %-->
+
+          <% if current_user && ((current_user.role=="Realtor" && current_user.id == house.user_id) || current_user.role=="Admin") %>
         <td><button><%= link_to 'Edit', edit_house_path(house) %></button></td>
         <td><button><%= link_to 'Destroy', house, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
         <%end %>

@@ -1,21 +1,35 @@
 class InquiriesController < ApplicationController
+
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
 
   # GET /inquiries
   # GET /inquiries.json
   def index
-    @inquiries = Inquiry.all
+    @@houseid = params[:id]
+    if (current_user.role != "HouseHunter")
+    @inquiries = Inquiry.where(house_id: @@houseid).order(created_at: :desc)
+    end
+
+    if(current_user.role == "HouseHunter")
+     @inquiries = Inquiry.where(userid: current_user.id).order(created_at: :desc)
+    end
   end
 
   # GET /inquiries/1
   # GET /inquiries/1.json
   def show
+
+    @inquiry = Inquiry.find(params[:id])
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @inquiry }
+    end
   end
 
   # GET /inquiries/new
   def new
     @inquiry = Inquiry.new
-    # puts "Inquiry Params: #{inquiry_params}"
+    @@houseid = params[:id]
   end
 
   # GET /inquiries/1/edit
@@ -26,8 +40,10 @@ class InquiriesController < ApplicationController
   # POST /inquiries.json
   def create
     @inquiry = Inquiry.new(inquiry_params)
-    puts "Inquiry Params: #{inquiry_params}"
+    puts "Inquiry Params: #{params}"
     @inquiry.update(user_id: current_user.id)
+    @inquiry.update(house_id: @@houseid)
+
     respond_to do |format|
       if @inquiry.save
         format.html { redirect_to @inquiry, notice: 'Inquiry was successfully created.' }
@@ -66,7 +82,7 @@ class InquiriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_inquiry
-      @inquiry = Inquiry.find(params[:id])
+      Inquiry.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

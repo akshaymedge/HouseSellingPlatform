@@ -36,6 +36,7 @@ class HousesController < ApplicationController
   def create
     @house = House.new(house_params)
     @house.update(user_id: current_user.id)
+    @house.update(company_id: current_user.company_id)
     respond_to do |format|
       if @house.save
         format.html { redirect_to @house, notice: 'House was successfully created.' }
@@ -79,6 +80,6 @@ class HousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
-      params.require(:house).permit(:location, :square_footage, :year_built, :style, :list_price, :no_of_floors, :basement, :current_house_owner, :contact_info, :potential_buyers, :image, :listPriceLow, :listPriceHigh, :squareFootageLow, :squareFootageHigh)
+      params.require(:house).permit(:user_id, :location, :square_footage, :year_built, :style, :list_price, :no_of_floors, :basement, :current_house_owner, :contact_info, :potential_buyers, :image, :listPriceLow, :listPriceHigh, :squareFootageLow, :squareFootageHigh, :company_id)
     end
 end
