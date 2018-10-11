@@ -4,13 +4,20 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
-    @houses = House.all
+    @houses = House.where(nil)
+    puts params.inspect
+    @houses = House.where(list_price: params[:listPriceLow]..params[:listPriceHigh]) if
+        params[:listPriceLow].present? and params[:listPriceHigh].present?
+    @houses = House.where(square_footage: params[:squareFootageLow]..params[:squareFootageHigh]) if
+        params[:squareFootageLow].present? and params[:squareFootageHigh].present?
+    @houses = House.where("location like ?", "#{params[:locationSearch]}%") if params[:locationSearch].present?
+  end
+
+  def search
+
   end
 
   # GET /houses/1
-  #
-  #
-  #
   # GET /houses/1.json
   def show
   end
@@ -72,6 +79,6 @@ class HousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
-      params.require(:house).permit(:location, :square_footage, :year_built, :style, :list_price, :no_of_floors, :basement, :current_house_owner, :contact_info, :potential_buyers, :image)
+      params.require(:house).permit(:location, :square_footage, :year_built, :style, :list_price, :no_of_floors, :basement, :current_house_owner, :contact_info, :potential_buyers, :image, :listPriceLow, :listPriceHigh, :squareFootageLow, :squareFootageHigh, :locationSearch)
     end
 end
