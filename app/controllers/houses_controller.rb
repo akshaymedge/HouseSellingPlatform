@@ -10,7 +10,7 @@ class HousesController < ApplicationController
         params[:listPriceLow].present? and params[:listPriceHigh].present?
     @houses = House.where(square_footage: params[:squareFootageLow]..params[:squareFootageHigh]) if
         params[:squareFootageLow].present? and params[:squareFootageHigh].present?
-    @houses = House.where("location like ?", "#{params[:locationSearch]}%") if params[:locationSearch].present?
+    @houses = House.where("location like ?", "#{params[:location]}%") if params[:location].present?
   end
 
   def search
@@ -79,6 +79,6 @@ class HousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
-      params.require(:house).permit(:location, :square_footage, :year_built, :style, :list_price, :no_of_floors, :basement, :current_house_owner, :contact_info, :potential_buyers, :image, :listPriceLow, :listPriceHigh, :squareFootageLow, :squareFootageHigh, :locationSearch)
+      params.require(:house).permit(:location, :square_footage, :year_built, :style, :list_price, :no_of_floors, :basement, :current_house_owner, :contact_info, :potential_buyers, :image, :listPriceLow, :listPriceHigh, :squareFootageLow, :squareFootageHigh)
     end
 end
