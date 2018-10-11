@@ -5,6 +5,7 @@
     List Price High:
     <%= text_field_tag :listPriceHigh, params[:listPriceHigh] %>
     (Please include both low and high values.)
+    <br><%= submit_tag 'Filter on List Price', name: nil %>
   </div>
   <div>
     Square Footage Low:
@@ -12,13 +13,12 @@
     Square Footage High:
     <%= text_field_tag :squareFootageHigh, params[:squareFootageHigh]%>
     (Please include both low and high values.)
+    <br><%= submit_tag 'Filter on List Price', name: nil %>
   </div>
   <div>
     Location:
     <%= text_field_tag :location, params[:location] %>
-  </div>
-  <div>
-    <%= submit_tag 'Filter', name: nil %>
+  <br><%= submit_tag 'Filter on Location', name: nil %>
   </div>
 <% end %>
 <br/>

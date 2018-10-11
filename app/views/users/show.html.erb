@@ -36,7 +36,6 @@
 <button><%= link_to 'Edit', edit_user_path(@user) %></button> |
 <button><%= link_to 'Back', users_path %></button> |
 <button><%= link_to 'Houses', houses_url %></button> |
-<button><%= link_to "Search Houses", houses_search_path %></button>
 <% if current_user && (current_user.role == "Realtor" || current_user.role == "Admin")%>
   <button><%= link_to 'Real Estate Companies', companies_url %></button> |
 <% end %>
