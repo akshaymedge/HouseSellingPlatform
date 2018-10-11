@@ -49,11 +49,12 @@
   <strong>Pictures:</strong>
   <%= image_tag @house.image_url.to_s %>
 </p>
-
+<% if current_user.role != "HouseHunter" %>
 <p>
   <strong>Potential buyers:</strong>
   <%= @house.potential_buyers %>
 </p>
+<% end %>
  <% if current_user && ((current_user.role=="Realtor" && current_user.id == @house.user_id) || current_user.role=="Admin") %>
   <button><%= link_to 'Edit', edit_house_path(@house) %></button>
 <% end %>
@@ -61,6 +62,7 @@
 
 <% if current_user.role == "HouseHunter" %>
 <button><%= link_to 'Submit an Inquiry', new_inquiry_path %></button>
+<td><button><%= link_to 'I am Interested!', House.update(@house.id, potential_buyers: current_user.name ) %></button></td>
 <% end %>
 <td><button><%= link_to 'View House Inquiries', inquiries_path %></button></td>
 <button><%= link_to 'Home', current_user %></button>

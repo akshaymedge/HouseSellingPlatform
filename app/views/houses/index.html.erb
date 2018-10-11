@@ -15,7 +15,9 @@
       <th>Basement</th>
       <th>Current House Owner</th>
       <th>Contact Info</th>
+      <% if current_user.role != "HouseHunter" %>
       <th>Potential buyers</th>
+      <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -32,9 +34,9 @@
         <td><%= house.basement %></td>
         <td><%= house.current_house_owner %></td>
         <td><%= house.contact_info %></td>
-        <%if current_user.role!="HouseHunter" %>
+        <%if current_user.role != "HouseHunter" %>
           <td><%= house.potential_buyers %></td>
-          <%end %>
+        <%end %>
         <td><button><%= link_to 'Show', house %></button></td>
         <% if current_user.role == "HouseHunter" %>
         <td><button><%= link_to 'Submit Inquiry', new_inquiry_path(:id => house.id) %></button></td>
